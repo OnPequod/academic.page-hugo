@@ -1,0 +1,5 @@
+{{- $a := .adapter -}}
+{{- partial "adapters/section.html" (dict "adapter" $a "site" .site "path" "talks" "title" "Talks") -}}
+{{- range partialCached "api/list.html" "talks" "talks" -}}
+  {{- $a.AddPage (partial "adapters/record-page.html" (dict "record" . "collection" "talks" "type" "talk" "body" .abstract "date" (.talk_date | default .published_at))) -}}
+{{- end -}}

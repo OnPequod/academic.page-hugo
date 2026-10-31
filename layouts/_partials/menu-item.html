@@ -1,0 +1,21 @@
+{{- /* One navigation item: internal links use path, external ones url. */ -}}
+{{- $item := .item -}}
+{{- $href := "" -}}
+{{- with $item.path -}}{{- $href = partial "path-url.html" . -}}{{- else -}}{{- $href = $item.url | default "" -}}{{- end -}}
+{{- $current := false -}}
+{{- with $item.path -}}
+  {{- $here := $.page.RelPermalink -}}
+  {{- if eq (strings.TrimSuffix "/" $here) (strings.TrimSuffix "/" ($href)) -}}{{- $current = true -}}{{- end -}}
+  {{- if and (eq . "/") (not $.page.IsHome) -}}{{- $current = false -}}{{- end -}}
+{{- end }}
+<li{{ if $item.children }} class="has-children"{{ end }}>
+  <a href="{{ $href }}"{{ if $current }} aria-current="page"{{ end }}{{ if $item.open_in_new_tab }} target="_blank" rel="noopener"{{ end }}{{ with $item.description }} title="{{ . }}"{{ end }}>{{ $item.label }}</a>
+  {{- with $item.children }}
+  <ul class="submenu">
+    {{- range . }}
+    {{- partial "menu-item.html" (dict "item" . "page" $.page) }}
+    {{- end }}
+  </ul>
+  {{- end }}
+</li>
+{{- /**/ -}}

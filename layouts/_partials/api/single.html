@@ -1,0 +1,11 @@
+{{- /*
+  Returns the data of a single-record endpoint: "site" (the site record
+  itself), "profile", or "study". Returns nil when the API answers 404.
+*/ -}}
+{{- $cfg := partialCached "api/config.html" "config" -}}
+{{- $url := $cfg.root -}}
+{{- if ne . "site" -}}{{- $url = printf "%s/%s" $url . -}}{{- end -}}
+{{- $data := false -}}
+{{- $body := partialCached "api/fetch.html" $url $url -}}
+{{- with $body -}}{{- $data = .data -}}{{- end -}}
+{{- return $data -}}
