@@ -23,7 +23,7 @@
     {{- with partialCached "course-pages.html" "course-pages" -}}{{- $course = (index . 0).RelPermalink -}}{{- end -}}
   {{- end -}}
   {{- if and (eq $site.site_type "study") (in (slice "/resources" "/contact") $base) -}}
-    {{- $href = printf "%s#%s" ("/" | relURL) (strings.TrimPrefix "/" $base) -}}
+    {{- $href = printf "%s#%s" site.Home.RelPermalink (strings.TrimPrefix "/" $base) -}}
   {{- else if and $course (eq $base "/syllabus") -}}
     {{- $href = printf "%s#syllabus" $course -}}
   {{- else if and $course (eq $base "/") $fragment -}}

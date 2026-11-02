@@ -24,7 +24,7 @@
   {{- with $r.recording_url }}{{ $links = $links | append (dict "label" "Recording" "url" .) }}{{ end -}}
   {{- with $links }}
   <ul class="links">
-    {{- range . }}<li><a href="{{ .url }}">{{ .label }}</a></li>{{ end }}
+    {{- range . }}<li><a href="{{ partial "path-url.html" .url }}">{{ .label }}</a></li>{{ end }}
   </ul>
   {{- end }}
   {{- partial "tag-links.html" $r.tags }}

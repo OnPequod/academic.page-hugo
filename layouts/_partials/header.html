@@ -17,7 +17,7 @@
 {{- end }}
 <header class="site-header">
   <div class="container header-inner">
-    <a class="site-name" href="{{ "/" | relURL }}">{{ $site.name }}</a>
+    <a class="site-name" href="{{ site.Home.RelPermalink }}">{{ $site.name }}</a>
     <nav aria-label="Main">
       <ul class="menu">
         {{- range $items }}

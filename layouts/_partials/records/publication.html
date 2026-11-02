@@ -21,7 +21,7 @@
   <ul class="links">
     {{- with $r.doi_url }}<li><a href="{{ . }}">DOI: {{ $r.doi }}</a></li>{{ end }}
     {{- with $r.official_url }}<li><a href="{{ . }}">Publisher's version</a></li>{{ end }}
-    {{- range $r.supplementary_links }}<li><a href="{{ .url }}">{{ .label | default .type | default .url }}</a></li>{{ end }}
+    {{- range $r.supplementary_links }}<li><a href="{{ partial "path-url.html" .url }}">{{ .label | default .type | default .url }}</a></li>{{ end }}
     {{- with $r.csl }}
     {{- $csl := resources.FromString (printf "publications/%s.csl.json" $r.slug) (jsonify (dict "indent" "  ") (slice .)) }}
     <li><a href="{{ $csl.RelPermalink }}" download>CSL-JSON</a></li>

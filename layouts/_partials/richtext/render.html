@@ -17,4 +17,16 @@
     {{- $out = .html | default "" -}}
   {{- end -}}
 {{- end -}}
+{{- /*
+  Links and images inside rich text that start with "/" point at the site's
+  root. When the site is served from a folder (a baseURL with a path, such as
+  a GitHub Pages project site), they get that folder in front.
+*/ -}}
+{{- /* From baseURL, because this also runs in the content adapter, before site.Home exists. */ -}}
+{{- $home := (urls.Parse site.BaseURL).Path | default "/" -}}
+{{- if not (strings.HasSuffix $home "/") -}}{{- $home = printf "%s/" $home -}}{{- end -}}
+{{- if and $out (ne $home "/") -}}
+  {{- $out = replaceRE `(href|src)="/"` (printf `$1="%s"` $home) $out -}}
+  {{- $out = replaceRE `(href|src)="/([^/"])` (printf `$1="%s$2` $home) $out -}}
+{{- end -}}
 {{- return $out -}}

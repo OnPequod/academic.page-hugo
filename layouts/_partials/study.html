@@ -12,12 +12,12 @@
     {{- with .institution }}<dt>Institution</dt><dd>{{ . }}</dd>{{ end }}
     {{- with .funder }}<dt>Funder</dt><dd>{{ . }}</dd>{{ end }}
     {{- with .registry_label }}<dt>Registration</dt><dd>{{ with $.registry_url }}<a href="{{ . }}">{{ $.registry_label }}</a>{{ else }}{{ . }}{{ end }}</dd>{{ end }}
-    {{- with .protocol_url }}<dt>Protocol</dt><dd><a href="{{ . }}">Read the protocol</a></dd>{{ end }}
+    {{- with .protocol_url }}<dt>Protocol</dt><dd><a href="{{ partial "path-url.html" . }}">Read the protocol</a></dd>{{ end }}
   </dl>
   {{- with .resources }}
   <h3 id="resources">Resources</h3>
   <ul class="links">
-    {{- range . }}<li><a href="{{ .url }}">{{ .title }}</a>{{ with .description }}: {{ . }}{{ end }}</li>{{ end }}
+    {{- range $res := . }}<li>{{ with $res.url }}<a href="{{ partial "path-url.html" . }}">{{ $res.title }}</a>{{ else }}{{ $res.title }}{{ end }}{{ with $res.description }}: {{ . }}{{ end }}</li>{{ end }}
   </ul>
   {{- end }}
   {{- with .contact }}{{ if or .email .text }}

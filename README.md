@@ -174,6 +174,7 @@ jobs:
 - **Changes need a rebuild.** `hugo server` does not watch the API. Restart it, or save a template, to pick up new content.
 - **Media stays on Academic.page.** Images and files load from the API's media URLs. If you want copies on your own host, fetch them with `resources.GetRemote` in the templates; that adds build time.
 - **Internal links in rich text.** Links inside content are site-relative paths without a trailing slash (`/research`). Most static hosts redirect these to `/research/`.
+- **Serving from a folder.** A site can live in a folder of another site, such as a GitHub Pages project site at `https://<owner>.github.io/<repository>/`. Set `HUGO_BASEURL` to the full address with the folder. Menu links, the site's own links, and links and images in rich text that start with `/` get the folder in front.
 
 ## Tests
 

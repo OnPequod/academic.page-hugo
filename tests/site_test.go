@@ -392,3 +392,17 @@ func TestBadKeyFailsWithoutLeaking(t *testing.T) {
 		t.Errorf("error output contains the key")
 	}
 }
+
+// TestServedFromAFolder builds with a baseURL that has a path, as a GitHub
+// Pages project site does. Menu, home, and rich-text links get the folder.
+func TestServedFromAFolder(t *testing.T) {
+	ts, _ := startMock(t)
+	out, _ := build(t, ts.URL, "42", "HUGO_BASEURL=https://example.org/castellanos/")
+	mustContain(t, out, "index.html",
+		`<a class="site-name" href="/castellanos/">`,
+		`<a href="/castellanos/research/">Research</a>`)
+	mustContain(t, out, "posts/why-we-preregister-ehr-analyses/index.html",
+		`href="/castellanos/projects/registry-linkage"`)
+	mustNotContain(t, out, "posts/why-we-preregister-ehr-analyses/index.html", `href="/projects/`)
+	mustContain(t, out, "404.html", `<a href="/castellanos/">home page</a>`)
+}
