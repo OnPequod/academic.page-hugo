@@ -22,7 +22,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Target trial emulation promises clear estimands. Real records bring irregular visits, informative missingness, and shifting codes. This talk walks through three studies and the fixes that held up."
     },
     "speaker_name": "Imani Castellanos",
     "copresenters": [],
@@ -57,7 +58,10 @@
     },
     "published_at": "2025-01-10T14:00:00Z",
     "created_at": "2025-01-10T09:00:00Z",
-    "updated_at": "2026-09-01T11:00:00Z"
+    "updated_at": "2026-09-01T11:00:00Z",
+    "talk_date_precision": "day",
+    "talk_date_display": "December 8, 2026",
+    "year_order": null
   },
   {
     "id": 702,
@@ -82,7 +86,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "We present the delay emulation and its sensitivity analyses."
     },
     "speaker_name": "Imani Castellanos",
     "copresenters": [
@@ -114,7 +119,10 @@
     },
     "published_at": "2025-01-10T14:00:00Z",
     "created_at": "2025-01-10T09:00:00Z",
-    "updated_at": "2026-09-01T11:00:00Z"
+    "updated_at": "2026-09-01T11:00:00Z",
+    "talk_date_precision": "day",
+    "talk_date_display": "August 5, 2026",
+    "year_order": null
   },
   {
     "id": 703,
@@ -139,7 +147,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "A seminar on the 2025 paper, with code."
     },
     "speaker_name": "Imani Castellanos",
     "copresenters": [],
@@ -177,7 +186,10 @@
     },
     "published_at": "2025-01-10T14:00:00Z",
     "created_at": "2025-01-10T09:00:00Z",
-    "updated_at": "2026-09-01T11:00:00Z"
+    "updated_at": "2026-09-01T11:00:00Z",
+    "talk_date_precision": "day",
+    "talk_date_display": "March 12, 2026",
+    "year_order": null
   },
   {
     "id": 704,
@@ -224,7 +236,10 @@
     },
     "published_at": "2025-01-10T14:00:00Z",
     "created_at": "2025-01-10T09:00:00Z",
-    "updated_at": "2026-09-01T11:00:00Z"
+    "updated_at": "2026-09-01T11:00:00Z",
+    "talk_date_precision": "day",
+    "talk_date_display": "November 14, 2025",
+    "year_order": null
   },
   {
     "id": 705,
@@ -261,7 +276,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Bring a laptop with R 4.4 or later.\n\n```r\ninstall.packages(\"renv\")\nrenv::init()\n```"
     },
     "speaker_name": "Imani Castellanos",
     "copresenters": [],
@@ -296,6 +312,9 @@
     },
     "published_at": "2025-01-10T14:00:00Z",
     "created_at": "2025-01-10T09:00:00Z",
-    "updated_at": "2026-09-01T11:00:00Z"
+    "updated_at": "2026-09-01T11:00:00Z",
+    "talk_date_precision": "day",
+    "talk_date_display": "June 2, 2025",
+    "year_order": null
   }
 ]

@@ -139,10 +139,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case len(parts) == 2 && parts[1] == "manifest":
 		s.respond(w, r, st, map[string]any{"data": s.manifest(st)})
 	case len(parts) == 2 && parts[1] == "profile":
+		// A course site's homepage is the course, so it has no profile.
+		if st.record["site_type"] == "course" {
+			writeError(w, http.StatusNotFound, "section_not_enabled", "Course sites have no profile.")
+			return
+		}
 		s.single(w, r, st, "profile.json")
 	case len(parts) == 2 && parts[1] == "study":
 		if st.record["site_type"] != "study" {
-			writeError(w, http.StatusNotFound, "not_found", "Not found.")
+			writeError(w, http.StatusNotFound, "section_not_enabled", "Only study sites have a study.")
 			return
 		}
 		s.single(w, r, st, "study.json")

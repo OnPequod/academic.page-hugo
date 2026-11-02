@@ -82,7 +82,9 @@
       }
     ],
     "created_at": "2025-03-01T12:00:00Z",
-    "updated_at": "2026-07-14T12:00:00Z"
+    "updated_at": "2026-07-14T12:00:00Z",
+    "bibtex": "@article{castellanos2026emulating,\n  title = {{Emulating target trials of treatment delay with linked registry data}},\n  author = {Castellanos, Imani and Reyes, Daniel and Okafor, Chidinma A.},\n  year = {2026},\n  journal = {American Journal of Epidemiology},\n  volume = {195},\n  number = {3},\n  pages = {412--424},\n  doi = {10.5555/aje.2026.0142}\n}\n",
+    "year_order": null
   },
   {
     "id": 602,
@@ -145,7 +147,9 @@
       }
     ],
     "created_at": "2025-03-01T12:00:00Z",
-    "updated_at": "2026-07-14T12:00:00Z"
+    "updated_at": "2026-07-14T12:00:00Z",
+    "bibtex": "@misc{castellanos2026a,\n  title = {{A sensitivity analysis for unmeasured confounding in emulated trials}},\n  author = {Castellanos, Imani and Lindqvist, Sara},\n  year = {2026},\n  howpublished = {medRxiv},\n  doi = {10.5555/2026.09.02.26012345}\n}\n",
+    "year_order": null
   },
   {
     "id": 603,
@@ -210,7 +214,9 @@
       }
     ],
     "created_at": "2025-03-01T12:00:00Z",
-    "updated_at": "2026-07-14T12:00:00Z"
+    "updated_at": "2026-07-14T12:00:00Z",
+    "bibtex": "@article{okafor2025multiple,\n  title = {{Multiple imputation of staging variables in population cancer registries}},\n  author = {Okafor, Chidinma A. and Castellanos, Imani},\n  year = {2025},\n  journal = {Statistics in Medicine},\n  volume = {44},\n  number = {12},\n  pages = {2201--2219},\n  doi = {10.5555/sim.2025.10231}\n}\n",
+    "year_order": null
   },
   {
     "id": 604,
@@ -273,7 +279,9 @@
       }
     ],
     "created_at": "2025-03-01T12:00:00Z",
-    "updated_at": "2026-07-14T12:00:00Z"
+    "updated_at": "2026-07-14T12:00:00Z",
+    "bibtex": "@inproceedings{castellanos2025bayesian,\n  title = {{Bayesian small-area estimation of pediatric asthma rates}},\n  author = {Castellanos, Imani and Moreau, Jules},\n  year = {2025},\n  booktitle = {Proceedings of the Joint Statistical Meetings},\n  pages = {88--97},\n  publisher = {American Statistical Association}\n}\n",
+    "year_order": null
   },
   {
     "id": 605,
@@ -332,7 +340,9 @@
       }
     ],
     "created_at": "2025-03-01T12:00:00Z",
-    "updated_at": "2026-07-14T12:00:00Z"
+    "updated_at": "2026-07-14T12:00:00Z",
+    "bibtex": "@incollection{castellanos2024competing,\n  title = {{Competing risks in clinical cohorts}},\n  author = {Castellanos, Imani},\n  year = {2024},\n  booktitle = {Handbook of Applied Survival Analysis},\n  pages = {233--260},\n  publisher = {Northbridge University Press}\n}\n",
+    "year_order": null
   },
   {
     "id": 606,
@@ -406,7 +416,9 @@
       }
     ],
     "created_at": "2025-03-01T12:00:00Z",
-    "updated_at": "2026-07-14T12:00:00Z"
+    "updated_at": "2026-07-14T12:00:00Z",
+    "bibtex": "@software{castellanos2024ttetools,\n  title = {{ttetools: Target trial emulation in R}},\n  author = {Castellanos, Imani and Reyes, Daniel},\n  year = {2024},\n  publisher = {Zenodo},\n  doi = {10.5555/zenodo.1234567},\n  url = {https://github.com/example/ttetools}\n}\n",
+    "year_order": null
   },
   {
     "id": 607,
@@ -473,7 +485,9 @@
       }
     ],
     "created_at": "2025-03-01T12:00:00Z",
-    "updated_at": "2026-07-14T12:00:00Z"
+    "updated_at": "2026-07-14T12:00:00Z",
+    "bibtex": "@techreport{castellanos2023data,\n  title = {{Data quality in the regional cancer registry, 2010-2022}},\n  author = {Castellanos, Imani and Okafor, Chidinma A. and Tran, Minh},\n  year = {2023},\n  number = {TR-2023-04},\n  institution = {Northbridge University School of Public Health},\n  url = {https://example.edu/reports/tr-2023-04.pdf}\n}\n",
+    "year_order": null
   },
   {
     "id": 608,
@@ -520,7 +534,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Advised by *Prof. Helen Ward*. Chapters 2 and 3 became the 2020 papers on weighting."
     },
     "citation": {
       "text": "Castellanos, I. (2019). Methods for time-varying confounding in observational cohorts. University of Lakeshore.",
@@ -560,6 +575,8 @@
       }
     ],
     "created_at": "2025-03-01T12:00:00Z",
-    "updated_at": "2026-07-14T12:00:00Z"
+    "updated_at": "2026-07-14T12:00:00Z",
+    "bibtex": "@phdthesis{castellanos2019methods,\n  title = {{Methods for time-varying confounding in observational cohorts}},\n  author = {Castellanos, Imani},\n  year = {2019},\n  school = {University of Lakeshore}\n}\n",
+    "year_order": null
   }
 ]

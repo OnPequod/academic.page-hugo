@@ -185,7 +185,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Electronic health records invite endless re-analysis. Every extraction can be filtered, linked, and re-coded, and each choice moves the estimate a little. We now **preregister** every EHR analysis before we look at outcome data.\n\n## What goes in the plan\n\n- The target trial: eligibility, treatment strategies, and time zero.\n- The causal diagram and the adjustment set it implies.\n- How we handle *missing* covariates and loss to follow-up.\n\n![A directed acyclic graph with treatment, outcome, and two confounders]({{ASSETS}}/9101/conversions/dag-confounding-large.svg)\n\n## What it costs\n\nAbout two weeks per project. The plan template is on [OSF](https://osf.io/), and the protocol for our registry linkage study is linked from the [project page](/projects/registry-linkage).\n\n> A plan written after the results is a description of the results."
     },
     "author": {
       "name": "Imani Castellanos"
@@ -356,7 +357,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "These notes collect what I tell students before they run `mice()` on a real data set.\n\n## Set up the predictor matrix first\n\nThe default uses every variable to impute every other variable. That is rarely what you want when the data include IDs or derived scores.\n\n```r\nlibrary(mice)\nimp <- mice(dat, m = 20, maxit = 0)\npred <- imp$predictorMatrix\npred[, \"patient_id\"] <- 0\nfit <- with(mice(dat, m = 20, predictorMatrix = pred), lm(sbp ~ age + bmi))\npool(fit)\n```\n\n### Check convergence\n\nPlot the chains with `plot(imp)`. If the means drift after iteration 10, raise `maxit` and look for variables that predict each other almost perfectly."
     },
     "author": {
       "name": "Imani Castellanos"
@@ -509,7 +511,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Start with these, in this order:\n\n1. Hernán and Robins on using big data to emulate a target trial.\n2. The protocol checklist papers, for the components of a trial specification.\n3. A worked example with sustained treatment strategies.\n4. A paper on immortal time bias, to see what goes wrong without a clear time zero.\n5. A critique, so the method does not look like a solved problem.\n\nThe full citations are on the [publications page](/publications) under the teaching tag."
     },
     "author": {
       "name": "Imani Castellanos"
@@ -662,7 +665,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Last year I reviewed forty manuscripts that used Cox models. The ***same three problems*** came up again and again.\n\n![Two Kaplan-Meier survival curves that cross at month 18]({{ASSETS}}/9103/conversions/km-curves-large.svg)\n\n1. Time zero did not match eligibility.\n2. Hazard ratios were reported for crossing curves.\n3. Competing risks were treated as censoring.\n\nThe fix for the first one is cheap.  \nThe fix for the third one is not, and it changes the estimand. ~~Reporting a sensitivity analysis is enough.~~ A sensitivity analysis does not fix the estimand."
     },
     "author": {
       "name": "Imani Castellanos"
@@ -806,7 +810,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Every paper from our group ships with code. Before a repository goes public we check five things.\n\n- It runs from a clean checkout with `renv::restore()`.\n- Paths are relative.\n- Simulated data stand in for restricted data.\n- The README names the R version.\n- A license file exists.\n\n---\n\nNone of this takes long once it is a habit."
     },
     "author": {
       "name": "Imani Castellanos"
@@ -864,7 +869,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Welcome to the new biostatistics cohort. My office hours are Tuesdays from 2 to 4 p.m. in Room 412.\n\nThe methods reading group meets every other Friday. Email me to join the list."
     },
     "author": {
       "name": "Imani Castellanos"
@@ -963,7 +969,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Raw rates from small counties swing wildly. A county with 40 children and 3 cases has a rate of 75 per 1,000, and nobody believes it.\n\n![Map of smoothed county asthma rates in shades of blue]({{ASSETS}}/9102/conversions/county-rates-map-large.svg)\n\n## Partial pooling\n\nA hierarchical model shrinks each county toward the regional mean in proportion to how little data it has. In code the filter is `rate < 0.05 & n > 30` for counties we trust without pooling.\n\n```stan\nmodel {\n  theta ~ normal(mu, tau);\n  y ~ binomial_logit(n, theta);\n}\n```"
     },
     "author": null,
     "featured_image": null,

@@ -24,7 +24,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Associate professor of biostatistics. Leads the lab's work on causal inference with health records."
     },
     "email": "imani.castellanos@example.edu",
     "website_url": "https://castellanos.biostatistician.page",
@@ -80,7 +81,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Works on sensitivity analysis for unmeasured confounding."
     },
     "email": "daniel.reyes@example.edu",
     "website_url": null,
@@ -135,11 +137,15 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Studies missing data in cancer registries."
     },
     "email": null,
     "website_url": null,
-    "research_interests": "missing data, registries",
+    "research_interests": [
+      "missing data",
+      "registries"
+    ],
     "joined_on": "2022-09-01",
     "left_on": null,
     "sort_order": 3,
@@ -195,11 +201,12 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Undergraduate in applied mathematics."
     },
     "email": null,
     "website_url": null,
-    "research_interests": null,
+    "research_interests": [],
     "joined_on": "2026-09-01",
     "left_on": null,
     "sort_order": 5,
@@ -233,7 +240,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Pediatric pulmonologist at Northbridge Medical Center."
     },
     "email": null,
     "website_url": "https://example.org/gliu",
@@ -273,7 +281,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Built the registry linkage pipeline. Now at the state health department."
     },
     "email": null,
     "website_url": null,

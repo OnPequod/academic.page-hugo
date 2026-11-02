@@ -28,7 +28,8 @@
           ]
         }
       ]
-    }
+    },
+    "markdown": "I am an associate professor of biostatistics at Northbridge University. I develop methods for **causal inference** with electronic health records and registries."
   },
   "body": {
     "html": "<p>My group works on target trial emulation, missing data in registries, and Bayesian models for small areas. We share code and synthetic data with every paper.</p><p>Before Northbridge I was a postdoctoral fellow at the Lakeshore Cancer Institute. I completed my PhD in biostatistics at the University of Lakeshore in 2019.</p><p>I am recruiting PhD students for fall 2027. Read the <a href=\"/research\">research page</a> first, then email me.</p>",
@@ -80,7 +81,8 @@
           ]
         }
       ]
-    }
+    },
+    "markdown": "My group works on target trial emulation, missing data in registries, and Bayesian models for small areas. We share code and synthetic data with every paper.\n\nBefore Northbridge I was a postdoctoral fellow at the Lakeshore Cancer Institute. I completed my PhD in biostatistics at the University of Lakeshore in 2019.\n\nI am recruiting PhD students for fall 2027. Read the [research page](/research) first, then email me."
   },
   "about_page": {
     "title": "About",

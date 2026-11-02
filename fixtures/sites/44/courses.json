@@ -45,7 +45,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "This course covers the analysis of time-to-event data in health research. Students fit and check models in R and write up one full analysis.\n\n## Prerequisites\n\nBIOS 601 and 602, or permission of the instructor."
     },
     "offerings": [
       {
@@ -305,7 +306,8 @@
                 ]
               }
             ]
-          }
+          },
+          "markdown": "Use the 12 observations in the handout. Show each step of the product-limit estimator.\n\n```r\nlibrary(survival)\nfit <- survfit(Surv(time, status) ~ 1, data = ps1)\nsummary(fit)\n```"
         },
         "due_at": "2026-09-18T03:59:00Z",
         "file": {
@@ -355,7 +357,8 @@
                 ]
               }
             ]
-          }
+          },
+          "markdown": "Fit the model, test proportional hazards with `cox.zph()`, and interpret the hazard ratio for treatment."
         },
         "due_at": "2026-10-09T03:59:00Z",
         "file": null,
@@ -384,7 +387,8 @@
                 ]
               }
             ]
-          }
+          },
+          "markdown": "Choose a data set from the list, state an estimand, and report your analysis in no more than 2,000 words."
         },
         "due_at": "2026-12-11T22:00:00Z",
         "file": null,

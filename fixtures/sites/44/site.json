@@ -18,9 +18,12 @@
   "allow_search_indexing": true,
   "footer_text": "BIOS 621, Northbridge University",
   "favicons": {
-    "ico": "{{ASSETS}}/favicons/44/favicon.ico",
-    "png_32": "{{ASSETS}}/favicons/44/favicon-32.png",
-    "apple_touch": null
+    "favicon-svg": null,
+    "favicon-ico": "{{ASSETS}}/favicons/44/favicon.ico",
+    "favicon-96x96": "{{ASSETS}}/favicons/44/favicon-32.png",
+    "apple-touch-icon": null,
+    "android-chrome-192x192": null,
+    "android-chrome-512x512": null
   },
   "sections": [
     "pages",
@@ -70,7 +73,6 @@
     "footer": []
   },
   "links": {
-    "profile": "{{API}}/content/sites/44/profile",
     "manifest": "{{API}}/content/sites/44/manifest",
     "tags": "{{API}}/content/sites/44/tags",
     "media": "{{API}}/content/sites/44/media",

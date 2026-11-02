@@ -38,8 +38,11 @@ func TestMock(t *testing.T) {
 	if rec, body := get(t, srv, "/api/v1/content/sites/42/courses", auth); rec.Code != 404 || body["code"] != "section_not_enabled" {
 		t.Errorf("personal site courses: got %d %v", rec.Code, body)
 	}
-	if rec, body := get(t, srv, "/api/v1/content/sites/42/study", auth); rec.Code != 404 || body["code"] != "not_found" {
+	if rec, body := get(t, srv, "/api/v1/content/sites/42/study", auth); rec.Code != 404 || body["code"] != "section_not_enabled" {
 		t.Errorf("personal site study: got %d %v", rec.Code, body)
+	}
+	if rec, body := get(t, srv, "/api/v1/content/sites/44/profile", auth); rec.Code != 404 || body["code"] != "section_not_enabled" {
+		t.Errorf("course site profile: got %d %v", rec.Code, body)
 	}
 	if rec, body := get(t, srv, "/api/v1/content/sites/7", auth); rec.Code != 404 || body["code"] != "site_not_found" {
 		t.Errorf("unknown site: got %d %v", rec.Code, body)

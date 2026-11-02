@@ -18,9 +18,12 @@
   "allow_search_indexing": true,
   "footer_text": null,
   "favicons": {
-    "ico": "{{ASSETS}}/favicons/43/favicon.ico",
-    "png_32": "{{ASSETS}}/favicons/43/favicon-32.png",
-    "apple_touch": null
+    "favicon-svg": null,
+    "favicon-ico": "{{ASSETS}}/favicons/43/favicon.ico",
+    "favicon-96x96": "{{ASSETS}}/favicons/43/favicon-32.png",
+    "apple-touch-icon": null,
+    "android-chrome-192x192": null,
+    "android-chrome-512x512": null
   },
   "sections": [
     "pages",

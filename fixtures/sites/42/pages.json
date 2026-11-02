@@ -85,7 +85,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "Our work develops methods for causal questions in routinely collected health data. The projects below are the current focus.\n\n## Themes\n\n- Target trial emulation with electronic health records.\n- Missing data in registries.\n- Bayesian small-area estimation."
     },
     "featured_image": null,
     "tags": [
@@ -139,7 +140,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "We default to designs that make assumptions visible: target trials, causal diagrams, and sensitivity analyses.\n\nSoftware is in R and Stan."
     },
     "featured_image": null,
     "tags": [],
@@ -187,7 +189,8 @@
             ]
           }
         ]
-      }
+      },
+      "markdown": "I teach applied survival analysis and causal inference in the MPH and PhD programs.\n\nCourse pages, slides, and problem sets are open to everyone."
     },
     "featured_image": null,
     "tags": [
