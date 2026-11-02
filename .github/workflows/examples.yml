@@ -1,0 +1,87 @@
+# Builds the four example sites from Academic.page's API example account and
+# publishes them on this repository's GitHub Pages site:
+#
+#   <pages address>/personal/  a personal site
+#   <pages address>/lab/       a lab site
+#   <pages address>/course/    a course site
+#   <pages address>/study/     a study site
+#
+# Settings (Settings > Secrets and variables > Actions):
+#   secret   ACADEMIC_PAGE_TOKEN    a content key for the example account's team
+#   variable EXAMPLE_SITE_PERSONAL  the personal site's ID
+#   variable EXAMPLE_SITE_LAB       the lab site's ID
+#   variable EXAMPLE_SITE_COURSE    the course site's ID
+#   variable EXAMPLE_SITE_STUDY     the study site's ID
+#
+# Pages must be set to deploy from GitHub Actions (Settings > Pages).
+
+name: Examples
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Cache the pinned Hugo build
+        uses: actions/cache@v4
+        with:
+          path: bin/hugo
+          key: hugo-${{ runner.os }}-${{ hashFiles('Makefile') }}
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build the example sites
+        env:
+          ACADEMIC_PAGE_TOKEN: ${{ secrets.ACADEMIC_PAGE_TOKEN }}
+          PAGES_URL: ${{ steps.pages.outputs.base_url }}
+          SITE_PERSONAL: ${{ vars.EXAMPLE_SITE_PERSONAL }}
+          SITE_LAB: ${{ vars.EXAMPLE_SITE_LAB }}
+          SITE_COURSE: ${{ vars.EXAMPLE_SITE_COURSE }}
+          SITE_STUDY: ${{ vars.EXAMPLE_SITE_STUDY }}
+        run: |
+          set -euo pipefail
+          make bin/hugo
+          mkdir -p _site
+          cp examples/index.html _site/index.html
+          for type in personal lab course study; do
+            var="SITE_${type^^}"
+            ACADEMIC_PAGE_SITE="${!var}" bin/hugo build --gc --minify \
+              --baseURL "${PAGES_URL%/}/${type}/" \
+              --destination "_site/${type}"
+          done
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

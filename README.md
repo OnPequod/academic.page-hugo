@@ -6,6 +6,8 @@ It covers every public section the API exposes: the profile, posts, pages, proje
 
 You can run it without an account. `make demo` builds and serves the site from bundled fixture data through a small local mock of the API.
 
+To see what it publishes, look at the [example sites](https://onpequod.github.io/academic.page-hugo/): one personal, lab, course, and study site, each built by this repository from an Academic.page account.
+
 ## Contents
 
 - [Quick start](#quick-start)
@@ -17,6 +19,7 @@ You can run it without an account. `make demo` builds and serves the site from b
 - [Deploying](#deploying)
 - [Limits](#limits)
 - [Tests](#tests)
+- [The example sites](#the-example-sites)
 - [Repository layout](#repository-layout)
 - [Notes on the Hugo setup](#notes-on-the-hugo-setup)
 
@@ -184,6 +187,10 @@ jobs:
 - `tests/fixtures_test.go`: checks every fixture record against its schema in `fixtures/openapi.json` (a copy of the live spec): required fields, unknown fields, types, enums, and consts.
 - `tests/site_test.go`: builds each fixture site with Hugo against the mock and checks that every section's pages exist and contain the expected content. It also builds with the Tiptap renderer and checks its HTML and escaping, builds with two records per request to check that the adapter follows `links.next`, checks that a wrong key fails the build with `Unauthorized`, and checks that the key appears nowhere in the build output, Hugo's cache, or Hugo's console output.
 
+## The example sites
+
+The workflow in `.github/workflows/examples.yml` builds the [example sites](https://onpequod.github.io/academic.page-hugo/) every day and on each push to `main`, and publishes them with GitHub Pages. It builds each of the four sites of Academic.page's API example account into its own folder, with that folder in `HUGO_BASEURL`, and adds the index page in `examples/`. It needs a content key for the example account in the `ACADEMIC_PAGE_TOKEN` secret and the four site IDs in the `EXAMPLE_SITE_PERSONAL`, `EXAMPLE_SITE_LAB`, `EXAMPLE_SITE_COURSE`, and `EXAMPLE_SITE_STUDY` variables. Copies of this repository can delete the workflow.
+
 ## Repository layout
 
 ```
@@ -199,6 +206,8 @@ config/demo/hugo.toml            lets Hugo reach the mock on 127.0.0.1
 fixtures/                        fixture data for four sites, and the OpenAPI spec
 internal/mockapi/, tools/mockapi the mock API
 tests/                           build tests
+examples/                        the index page of the example sites
+.github/workflows/examples.yml   builds and publishes the example sites
 ```
 
 ## Notes on the Hugo setup
