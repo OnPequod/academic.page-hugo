@@ -67,7 +67,7 @@
 {{- with site.GetPage "/talks" }}
 {{- $today := now.Format "2006-01-02" }}
 {{- $upcoming := slice }}
-{{- range .Pages.ByDate }}{{ $r := partial "api/record.html" . }}{{ if and $r.talk_date (ge $r.talk_date $today) }}{{ $upcoming = $upcoming | append . }}{{ end }}{{ end }}
+{{- range .Pages.ByWeight.Reverse }}{{ $r := partial "api/record.html" . }}{{ if and $r.talk_date (ge $r.talk_date $today) }}{{ $upcoming = $upcoming | append . }}{{ end }}{{ end }}
 {{- with $upcoming }}
 <section>
   <h2>Upcoming talks</h2>

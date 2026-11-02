@@ -4,11 +4,11 @@
     <h1>{{ .Title }}</h1>
     <p class="meta">
       {{- with $r.talk_type }}<span class="badge">{{ partial "labels.html" (dict "kind" "talk" "value" .) }}</span> {{ end -}}
-      <time datetime="{{ $r.talk_date }}">{{ partial "date.html" $r.talk_date }}</time>
+      {{- partial "talk-date.html" $r }}
     </p>
   </header>
   <dl class="facts">
-    {{- with $r.speaker_name }}<dt>Speaker</dt><dd>{{ . }}{{ with $r.copresenters }}, with {{ delimit . ", " " and " }}{{ end }}</dd>{{ end }}
+    {{- with $r.speaker_name }}<dt>Speaker</dt><dd>{{ . }}{{ with $r.copresenters }}{{ $names := slice }}{{ range . }}{{ if reflect.IsMap . }}{{ $names = $names | append .name }}{{ else }}{{ $names = $names | append . }}{{ end }}{{ end }}, with {{ delimit $names ", " " and " }}{{ end }}</dd>{{ end }}
     {{- with $r.meeting_name }}<dt>Event</dt><dd>{{ . }}</dd>{{ end }}
     {{- with $r.location }}<dt>Location</dt><dd>{{ with $r.location_url }}<a href="{{ . }}">{{ $r.location }}</a>{{ else }}{{ . }}{{ end }}</dd>{{ end }}
   </dl>

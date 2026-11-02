@@ -23,14 +23,17 @@
 <meta property="og:image" content="{{ (.conversions.og | default .).url }}">
 {{- end }}{{ end }}
 {{- with $site.favicons }}
-{{- with .png_32 }}
-<link rel="icon" type="image/png" sizes="32x32" href="{{ . }}">
+{{- with index . "favicon-96x96" }}
+<link rel="icon" type="image/png" sizes="96x96" href="{{ . }}">
 {{- end }}
-{{- with .ico }}
-<link rel="icon" href="{{ . }}">
+{{- with index . "favicon-svg" }}
+<link rel="icon" type="image/svg+xml" href="{{ . }}">
 {{- end }}
-{{- with .apple_touch }}
-<link rel="apple-touch-icon" href="{{ . }}">
+{{- with index . "favicon-ico" }}
+<link rel="shortcut icon" href="{{ . }}">
+{{- end }}
+{{- with index . "apple-touch-icon" }}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ . }}">
 {{- end }}
 {{- end }}
 {{- with site.GetPage "/posts" }}{{ with .OutputFormats.Get "rss" }}

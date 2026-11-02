@@ -124,6 +124,21 @@ func mustContain(t *testing.T, dir, rel string, wants ...string) {
 	}
 }
 
+// mustAppearInOrder checks that each string appears after the one before it.
+func mustAppearInOrder(t *testing.T, dir, rel string, wants ...string) {
+	t.Helper()
+	body := read(t, dir, rel)
+	at := 0
+	for _, want := range wants {
+		i := strings.Index(body[at:], want)
+		if i < 0 {
+			t.Errorf("%s: %q missing or out of order", rel, want)
+			return
+		}
+		at += i + len(want)
+	}
+}
+
 func mustNotExist(t *testing.T, dir string, rels ...string) {
 	t.Helper()
 	for _, rel := range rels {
@@ -230,6 +245,13 @@ func TestPersonalSite(t *testing.T) {
 	mustContain(t, out, "talks/index.html", "<h2>Upcoming</h2>", "<h2>Past</h2>", "Invited talk", "Poster")
 	mustContain(t, out, "talks/jsm-2026-delay-emulation/index.html", "with Daniel Reyes", `>Recording</a>`, `>Slides</a>`)
 	mustContain(t, out, "talks/missing-stage-seminar/index.html", "missing-stage-slides.pdf")
+	// Past talks keep the API's order, including the hand order within 2025,
+	// and a talk known only by its month shows the month.
+	mustAppearInOrder(t, out, "talks/index.html",
+		"<h2>Past</h2>", "jsm-2026-delay-emulation", "missing-stage-seminar", "renv-workshop", "small-area-poster")
+	mustContain(t, out, "talks/small-area-poster/index.html", `<time datetime="2025-11-01">November 2025</time>`)
+	// Favicons under the API's keys.
+	mustContain(t, out, "index.html", `<link rel="shortcut icon" href="`, `/favicons/42/favicon.ico">`, `sizes="96x96"`)
 
 	// Tags: names and descriptions from the API, content grouped by section.
 	mustContain(t, out, "tags/index.html", "Causal inference", "Survival analysis")

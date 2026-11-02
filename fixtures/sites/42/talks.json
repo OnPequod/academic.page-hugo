@@ -91,7 +91,9 @@
     },
     "speaker_name": "Imani Castellanos",
     "copresenters": [
-      "Daniel Reyes"
+      {
+        "name": "Daniel Reyes"
+      }
     ],
     "talk_type": "contributed",
     "talk_date": "2026-08-05",
@@ -192,56 +194,6 @@
     "year_order": null
   },
   {
-    "id": 704,
-    "type": "talk",
-    "slug": "small-area-poster",
-    "path": "/talks/small-area-poster",
-    "url": "https://castellanos.biostatistician.page/talks/small-area-poster",
-    "title": "Partial pooling for county asthma rates",
-    "excerpt": "A poster on hierarchical models for small-area rates.",
-    "abstract": null,
-    "speaker_name": "Imani Castellanos",
-    "copresenters": [],
-    "talk_type": "poster",
-    "talk_date": "2025-11-14",
-    "meeting_name": "Society for Epidemiologic Research",
-    "location": "Online",
-    "location_url": null,
-    "slides_url": null,
-    "paper_url": null,
-    "recording_url": null,
-    "slides_file": null,
-    "paper_file": {
-      "id": 722,
-      "file_name": "small-area-poster.pdf",
-      "mime_type": "application/pdf",
-      "size": 2400000,
-      "alt": null,
-      "url": "{{ASSETS}}/722/small-area-poster.pdf",
-      "conversions": {}
-    },
-    "is_featured": false,
-    "display_order": null,
-    "featured_image": null,
-    "tags": [
-      {
-        "id": 327,
-        "name": "Bayesian methods",
-        "slug": "bayesian"
-      }
-    ],
-    "seo": {
-      "title": null,
-      "description": "A poster on hierarchical models for small-area rates."
-    },
-    "published_at": "2025-01-10T14:00:00Z",
-    "created_at": "2025-01-10T09:00:00Z",
-    "updated_at": "2026-09-01T11:00:00Z",
-    "talk_date_precision": "day",
-    "talk_date_display": "November 14, 2025",
-    "year_order": null
-  },
-  {
     "id": 705,
     "type": "talk",
     "slug": "renv-workshop",
@@ -315,6 +267,56 @@
     "updated_at": "2026-09-01T11:00:00Z",
     "talk_date_precision": "day",
     "talk_date_display": "June 2, 2025",
-    "year_order": null
+    "year_order": 1
+  },
+  {
+    "id": 704,
+    "type": "talk",
+    "slug": "small-area-poster",
+    "path": "/talks/small-area-poster",
+    "url": "https://castellanos.biostatistician.page/talks/small-area-poster",
+    "title": "Partial pooling for county asthma rates",
+    "excerpt": "A poster on hierarchical models for small-area rates.",
+    "abstract": null,
+    "speaker_name": "Imani Castellanos",
+    "copresenters": [],
+    "talk_type": "poster",
+    "talk_date": "2025-11-01",
+    "meeting_name": "Society for Epidemiologic Research",
+    "location": "Online",
+    "location_url": null,
+    "slides_url": null,
+    "paper_url": null,
+    "recording_url": null,
+    "slides_file": null,
+    "paper_file": {
+      "id": 722,
+      "file_name": "small-area-poster.pdf",
+      "mime_type": "application/pdf",
+      "size": 2400000,
+      "alt": null,
+      "url": "{{ASSETS}}/722/small-area-poster.pdf",
+      "conversions": {}
+    },
+    "is_featured": false,
+    "display_order": null,
+    "featured_image": null,
+    "tags": [
+      {
+        "id": 327,
+        "name": "Bayesian methods",
+        "slug": "bayesian"
+      }
+    ],
+    "seo": {
+      "title": null,
+      "description": "A poster on hierarchical models for small-area rates."
+    },
+    "published_at": "2025-01-10T14:00:00Z",
+    "created_at": "2025-01-10T09:00:00Z",
+    "updated_at": "2026-09-01T11:00:00Z",
+    "talk_date_precision": "month",
+    "talk_date_display": "November 2025",
+    "year_order": 2
   }
 ]
