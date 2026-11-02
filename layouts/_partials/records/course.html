@@ -18,7 +18,7 @@
   <figure class="featured">{{ partial "media-image.html" (dict "file" . "prefer" (slice "large")) }}</figure>
   {{- end }}
   {{- with $r.offerings }}
-  <h2>Offerings</h2>
+  <h2 id="offerings">Offerings</h2>
   <ul class="offerings">
     {{- range . }}
     <li>
@@ -30,12 +30,12 @@
   </ul>
   {{- end }}
   {{- with $r.syllabus }}
-  <p><a class="button" href="{{ (.file).url | default .download_url | default .url }}">Download the syllabus{{ with .file }} ({{ .file_name }}){{ end }}</a></p>
+  <p id="syllabus"><a class="button" href="{{ (.file).url | default .download_url | default .url }}">Download the syllabus{{ with .file }} ({{ .file_name }}){{ end }}</a></p>
   {{- end }}
   <div class="prose">{{ .Content }}</div>
 
   {{- with $r.lessons }}
-  <h2>Lessons</h2>
+  <h2 id="lessons">Lessons</h2>
   <ol class="lessons">
     {{- range sort . "sort_order" }}
     <li id="lesson-{{ .id }}">
@@ -69,12 +69,12 @@
   {{- end }}
 
   {{- with $r.materials }}
-  <h2>Course materials</h2>
+  <h2 id="materials">Course materials</h2>
   {{ partial "course-materials.html" . }}
   {{- end }}
 
   {{- with $r.assignments }}
-  <h2>Assignments</h2>
+  <h2 id="assignments">Assignments</h2>
   {{- range sort . "sort_order" }}
   <section class="assignment" id="assignment-{{ .slug | default .id }}">
     <h3>{{ .title }}</h3>
@@ -87,7 +87,7 @@
   {{- end }}
 
   {{- with $r.references }}
-  <h2>References</h2>
+  <h2 id="texts-resources">References</h2>
   <ul class="references">
     {{- range sort . "sort_order" }}
     <li>{{ partial "course-reference.html" . }}</li>

@@ -48,10 +48,35 @@
       {
         "label": "Syllabus",
         "description": null,
-        "path": "/courses/applied-survival-analysis",
-        "url": "https://bios621.biostatistician.page/courses/applied-survival-analysis",
+        "path": "/syllabus",
+        "url": "https://bios621.biostatistician.page/syllabus",
         "open_in_new_tab": false,
         "children": []
+      },
+      {
+        "label": "Course details",
+        "description": null,
+        "path": null,
+        "url": null,
+        "open_in_new_tab": false,
+        "children": [
+          {
+            "label": "Lessons",
+            "description": null,
+            "path": "/#lessons",
+            "url": "https://bios621.biostatistician.page/#lessons",
+            "open_in_new_tab": false,
+            "children": []
+          },
+          {
+            "label": "Assignments",
+            "description": null,
+            "path": "/#assignments",
+            "url": "https://bios621.biostatistician.page/#assignments",
+            "open_in_new_tab": false,
+            "children": []
+          }
+        ]
       },
       {
         "label": "Announcements",
@@ -66,6 +91,14 @@
         "description": null,
         "path": "/office-hours",
         "url": "https://bios621.biostatistician.page/office-hours",
+        "open_in_new_tab": false,
+        "children": []
+      },
+      {
+        "label": "About the instructor",
+        "description": null,
+        "path": "/about",
+        "url": "https://bios621.biostatistician.page/about",
         "open_in_new_tab": false,
         "children": []
       }

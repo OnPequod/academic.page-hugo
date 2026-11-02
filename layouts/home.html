@@ -36,11 +36,11 @@
 {{- end }}
 
 {{- if in $site.sections "courses" }}
-{{- with site.GetPage "/courses" }}
+{{- with partialCached "course-pages.html" "course-pages" }}
 <section>
-  <h2>{{ .Title }}</h2>
+  <h2>{{ (index . 0).Parent.Title }}</h2>
   <ul class="cards">
-    {{- range .Pages.ByWeight }}
+    {{- range . }}
     {{- $r := partial "api/record.html" . }}
     <li class="card">
       <h3 class="entry-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>

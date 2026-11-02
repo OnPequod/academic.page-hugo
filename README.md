@@ -110,12 +110,14 @@ Pages keep the paths they have on the Academic.page site, so links inside rich t
 | `/projects/`, `/projects/<slug>/` | projects | Status, dates, links, technologies, featured image, and gallery. |
 | `/publications/`, `/publications/<slug>/` | publications | Grouped by year (or type), with the formatted citation, type, DOI, and supplementary links. Each publication also gets a CSL-JSON file. |
 | `/publications/publications.bib` | `publications.bib` | The whole list as one BibTeX file. |
-| `/talks/`, `/talks/<slug>/` | talks | Split into upcoming and past by the build date. Slides, paper, and recording links. |
-| `/courses/`, `/courses/<slug>/` | courses | Offerings, syllabus, lessons with materials, readings, and assignments, then course-level materials, assignments, and references. Due times show in the site's timezone. |
+| `/talks/`, `/talks/<slug>/` | talks | Split into upcoming and past by the build date, in the site's order: newest year first, and within a year the order the site sets. Dates known only by year or month show as such. Slides, paper, and recording links. |
+| `/teaching/`, `/teaching/<slug>/` | courses | Offerings, syllabus, lessons with materials, readings, and assignments, then course-level materials, assignments, and references. Due times show in the site's timezone. The folder is the one the API's course paths use (`/teaching`, or `/courses` on older sites). |
 | `/members/` or `/team/` | lab-members | One page. Current members are grouped by role, then alumni. Each person has an anchor that matches the API's path (`/members#slug`). |
 | `/tags/`, `/tags/<slug>/` | tags | Tag names and descriptions from the API. A tag page groups its records by section. |
 
-The header and footer menus come from the site's navigation settings (`navigation.header` and `navigation.footer`). If a site has no header menu, the site builds one from its sections. The site's name, accent color, favicons, footer text, homepage title and description, and search-indexing setting (which controls `robots.txt` and a `noindex` tag) also come from the site record.
+The header and footer menus come from the site's navigation settings (`navigation.header` and `navigation.footer`). If a site has no header menu, the site builds one from its sections.
+
+Menus can link to pages that Academic.page builds in for a site type, which the API does not return as pages. These go to the place this site shows the same content: on a study site, `/resources` and `/contact` go to those parts of the home page, and on a course site, `/syllabus` and the course sections (`/#lessons`, `/#assignments`, `/#texts-resources`, `/#offerings`) go to the course's page. A menu item whose page this site does not build, such as a course site's instructor page, is left out. A menu group without a link of its own shows its label as a button that opens the group. The site's name, accent color, favicons, footer text, homepage title and description, and search-indexing setting (which controls `robots.txt` and a `noindex` tag) also come from the site record.
 
 Media files are used where records reference them: profile and member photos, featured images, project galleries, talk slides and papers, syllabi, course files, and images inside rich text. Images load from the API's media URLs and use the resized versions in `conversions` when they exist.
 

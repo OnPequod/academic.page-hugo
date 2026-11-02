@@ -77,6 +77,31 @@
         "url": "https://hearth.biostatistician.page/posts",
         "open_in_new_tab": false,
         "children": []
+      },
+      {
+        "label": "Materials",
+        "description": null,
+        "path": null,
+        "url": null,
+        "open_in_new_tab": false,
+        "children": [
+          {
+            "label": "Study materials",
+            "description": null,
+            "path": "/resources",
+            "url": "https://hearth.biostatistician.page/resources",
+            "open_in_new_tab": false,
+            "children": []
+          },
+          {
+            "label": "Contact",
+            "description": null,
+            "path": "/contact",
+            "url": "https://hearth.biostatistician.page/contact",
+            "open_in_new_tab": false,
+            "children": []
+          }
+        ]
       }
     ],
     "footer": [

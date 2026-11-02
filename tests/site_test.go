@@ -139,6 +139,16 @@ func mustAppearInOrder(t *testing.T, dir, rel string, wants ...string) {
 	}
 }
 
+func mustNotContain(t *testing.T, dir, rel string, unwanted ...string) {
+	t.Helper()
+	body := read(t, dir, rel)
+	for _, u := range unwanted {
+		if strings.Contains(body, u) {
+			t.Errorf("%s: unexpected %q", rel, u)
+		}
+	}
+}
+
 func mustNotExist(t *testing.T, dir string, rels ...string) {
 	t.Helper()
 	for _, rel := range rels {
@@ -281,13 +291,25 @@ func TestCourseSite(t *testing.T) {
 	out, cache := build(t, ts.URL, "44")
 	noKeyIn(t, out, cache)
 	mustContain(t, out, "index.html", "BIOS 621: Applied Survival Analysis", `<span class="badge">Current</span> Fall 2026`)
-	mustContain(t, out, "courses/applied-survival-analysis/index.html",
-		"<h2>Offerings</h2>", "BIOS 621, Fall 2026, Northbridge University", "bios621-syllabus-fall-2026.pdf",
+	mustContain(t, out, "teaching/applied-survival-analysis/index.html",
+		`<h2 id="offerings">Offerings</h2>`, "BIOS 621, Fall 2026, Northbridge University", "bios621-syllabus-fall-2026.pdf",
 		"<h3>Lesson 1: Time, censoring, and the Kaplan-Meier estimator</h3>", "lecture-01.pdf",
 		"<cite>Survival Analysis: A Self-Learning Text</cite>", "(Required: chapters 1 and 2)",
 		`<a href="#assignment-problem-set-1">Problem set 1: Kaplan-Meier by hand</a>, due September 17, 2026`,
 		"Thursday, September 17, 2026, 11:59 PM EDT", "<code>cox.zph()</code>",
-		"<h2>Course materials</h2>", "<h2>References</h2>")
+		`<h2 id="materials">Course materials</h2>`, `<h2 id="texts-resources">References</h2>`)
+	// The course lives under /teaching, as the API's paths say, and the
+	// section that lists it is there too.
+	mustContain(t, out, "teaching/index.html", "applied-survival-analysis")
+	// Menu items for Academic.page's built-in course pages go to the course
+	// page. A group heading is a button. The instructor page has no data in
+	// the API, so its item is left out.
+	mustContain(t, out, "index.html",
+		`<a href="/teaching/applied-survival-analysis/#syllabus">Syllabus</a>`,
+		`<button type="button" class="menu-heading">Course details</button>`,
+		`<a href="/teaching/applied-survival-analysis/#lessons">Lessons</a>`,
+		`<a href="/teaching/applied-survival-analysis/#assignments">Assignments</a>`)
+	mustNotContain(t, out, "index.html", "About the instructor")
 	mustContain(t, out, "office-hours/index.html", "<li><p>Tuesdays, 2 to 4 p.m., Room 412.</p></li>")
 	mustNotExist(t, out, "publications/index.html", "talks/index.html", "projects/index.html", "members/index.html")
 }
@@ -299,6 +321,11 @@ func TestStudySite(t *testing.T) {
 	mustContain(t, out, "index.html",
 		"<h2>About the study</h2>", "<dt>Status</dt><dd>Recruiting</dd>", `<a href="https://clinicaltrials.gov/study/NCT00000000">NCT00000000</a>`,
 		"Participant information sheet", "Call 555-0142", `<a href="/team/">Team</a>`)
+	// The study's built-in materials and contact pages go to those parts of
+	// the home page.
+	mustContain(t, out, "index.html",
+		`<a href="/#resources">Study materials</a>`, `<a href="/#contact">Contact</a>`,
+		`<h3 id="resources">Resources</h3>`, `<h3 id="contact">Contact</h3>`)
 	mustContain(t, out, "team/index.html", "<h1>Team</h1>", `id="grace-liu"`, "<h2>Faculty</h2>", "<h2>Staff</h2>")
 	mustContain(t, out, "publications/index.html", "BMJ Open")
 	mustContain(t, out, "publications/publications.bib", "@article{liu2025protocol,")
