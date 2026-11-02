@@ -1,0 +1,42 @@
+#!/bin/sh
+# Writes one example repository from this starter: every tracked file, a
+# GitHub Pages workflow that builds the given Academic.page site, and a README
+# that says which example it is.
+#
+#   tools/example-repo/make <personal|course|study|lab> <site-id> "<site name>" <destination>
+#
+# The destination must be an empty directory or a git checkout of the example
+# repository. Files the starter no longer has are removed from it.
+set -eu
+
+type=$1 site_id=$2 site_name=$3 dest=$4
+case $type in
+  personal|course|study|lab) ;;
+  *) echo "type must be personal, course, study, or lab" >&2; exit 2 ;;
+esac
+case $site_id in
+  ''|*[!0-9]*) echo "site id must be a number" >&2; exit 2 ;;
+esac
+
+root=$(cd "$(dirname "$0")/../.." && pwd)
+here=$root/tools/example-repo
+mkdir -p "$dest"
+dest=$(cd "$dest" && pwd)
+
+# Start from a clean tree, keeping the destination's own .git.
+find "$dest" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+git -C "$root" archive HEAD | tar -x -C "$dest"
+# The generator belongs to the starter only.
+rm -rf "$dest/tools/example-repo"
+
+mkdir -p "$dest/.github/workflows"
+sed "s/__SITE_ID__/$site_id/" "$here/deploy.yml" > "$dest/.github/workflows/deploy.yml"
+
+title=$(printf '%s' "$type" | awk '{ print toupper(substr($0, 1, 1)) substr($0, 2) }')
+escaped_name=$(printf '%s' "$site_name" | sed 's/[&/\]/\\&/g')
+{
+  sed -e "s/__TYPE_TITLE__/$title/g" -e "s/__TYPE__/$type/g" -e "s/__SITE_NAME__/$escaped_name/g" "$here/README-header.md"
+  cat "$root/README.md"
+} > "$dest/README.md"
+
+echo "Wrote the $type example (site $site_id) to $dest"

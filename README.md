@@ -6,7 +6,14 @@ It covers every public section the API exposes: the profile, posts, pages, proje
 
 You can run it without an account. `make demo` builds and serves the site from bundled fixture data through a small local mock of the API.
 
-To see what it publishes, look at the [example sites](https://onpequod.github.io/academic.page-hugo/): one personal, lab, course, and study site, each built by this repository from an Academic.page account.
+To see what it publishes, look at the four example sites, each built by a copy of this repository from an Academic.page site:
+
+| Site type | Built site | Repository |
+| --- | --- | --- |
+| Personal | <https://onpequod.github.io/academic.page-hugo-personal/> | [academic.page-hugo-personal](https://github.com/OnPequod/academic.page-hugo-personal) |
+| Course | <https://onpequod.github.io/academic.page-hugo-course/> | [academic.page-hugo-course](https://github.com/OnPequod/academic.page-hugo-course) |
+| Study | <https://onpequod.github.io/academic.page-hugo-study/> | [academic.page-hugo-study](https://github.com/OnPequod/academic.page-hugo-study) |
+| Lab | <https://onpequod.github.io/academic.page-hugo-lab/> | [academic.page-hugo-lab](https://github.com/OnPequod/academic.page-hugo-lab) |
 
 ## Contents
 
@@ -189,7 +196,13 @@ jobs:
 
 ## The example sites
 
-The workflow in `.github/workflows/examples.yml` builds the [example sites](https://onpequod.github.io/academic.page-hugo/) every day and on each push to `main`, and publishes them with GitHub Pages. It builds each of the four sites of Academic.page's API example account into its own folder, with that folder in `HUGO_BASEURL`, and adds the index page in `examples/`. It needs a content key for the example account in the `ACADEMIC_PAGE_TOKEN` secret and the four site IDs in the `EXAMPLE_SITE_PERSONAL`, `EXAMPLE_SITE_LAB`, `EXAMPLE_SITE_COURSE`, and `EXAMPLE_SITE_STUDY` variables. Copies of this repository can delete the workflow.
+Each example repository is this repository plus a GitHub Pages workflow that builds one site from Academic.page's API example account, and a few lines at the top of the README. `tools/example-repo/make` writes one from the current commit:
+
+```sh
+tools/example-repo/make personal 179 "Maya Brooks" ../academic.page-hugo-personal
+```
+
+The arguments are the site type, the site's ID, its name, and the example repository's checkout. Rerun it after changing the starter, then commit and push in the example repository. The workflow there reads the site with a content key stored in its `ACADEMIC_PAGE_TOKEN` secret.
 
 ## Repository layout
 
@@ -206,8 +219,7 @@ config/demo/hugo.toml            lets Hugo reach the mock on 127.0.0.1
 fixtures/                        fixture data for four sites, and the OpenAPI spec
 internal/mockapi/, tools/mockapi the mock API
 tests/                           build tests
-examples/                        the index page of the example sites
-.github/workflows/examples.yml   builds and publishes the example sites
+tools/example-repo/              writes an example repository (see The example sites)
 ```
 
 ## Notes on the Hugo setup
